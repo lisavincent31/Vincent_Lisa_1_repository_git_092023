@@ -1,5 +1,8 @@
 @import "custom.scss";
+
+@import "theme/variables";
 @import "~bootstrap/scss/bootstrap";
+@import "theme/bootswatch";
 
 body {
     background-color: #ffffff;
