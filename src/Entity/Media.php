@@ -18,9 +18,9 @@ class Media
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $URL = null;
+    private ?string $url = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 255)]
     private ?string $type = null;
 
     #[ORM\Column(length: 255)]
@@ -52,14 +52,14 @@ class Media
         return $this;
     }
 
-    public function getURL(): ?string
+    public function getUrl(): ?string
     {
-        return $this->URL;
+        return $this->url;
     }
 
-    public function setURL(string $URL): static
+    public function setUrl(string $url): static
     {
-        $this->URL = $URL;
+        $this->url = $url;
 
         return $this;
     }
@@ -112,12 +112,12 @@ class Media
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): static
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 

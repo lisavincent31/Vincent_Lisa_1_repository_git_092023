@@ -12,19 +12,22 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Accueil</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/auth">Connexion</a>
-                    </li>
+                    {% if (app.user) %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle px-3" href="#" id="compte" data-bs-toggle="dropdown" aria-expanded="true">
-                            John Doe
+                            {{ app.user.username }}
                             <img src="https://picsum.photos/id/256/25/25" class="pl-2 rounded-circle">
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="compte" data-bs-popper="none">
-                            <li><a class="dropdown-item" href="#">Tableau de bord</a></li>
+                            <li><a class="dropdown-item" href="/trick/create">Créer un trick</a></li>
                             <li><a class="dropdown-item" href="/logout">Déconnexion</a></li>
                         </ul>
                     </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Connexion</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
