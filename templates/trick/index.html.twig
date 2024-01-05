@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TrickController!{% endblock %}
+
+{% block body %}
+<main>
+    <div class="container-fluid position-relative mt-5 px-0" >
+        {# Full width images with trick's name #}
+        <div class="bg-image" style="background-image:url('https://picsum.photos/id/1/1024/550')">
+            {% if (app.user) %}
+                {% if (app.user.id == trick.author.id) %}
+                    <button type="button" class="btn btn-outline-success">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                {% endif %}
+            {% endif %}
+            <div class="img-text bg-light">
+                <h1 class="text-center pt-2">{{ trick.name }}</h1>
+            </div>
+        </div>
+    </div>
+
+    {# All images and videos for this thrick #}
+    <div class="container mt-4" id="slideshow">
+        <div class="row border shadow rounded p-2 justify-content-start">
+            <div class="col">
+                <img src="https://picsum.photos/id/136/200/100" class="img-fluid" alt="...">
+            </div>
+
+            <div class="col">
+                <img src="https://picsum.photos/id/842/200/100" class="img-fluid" alt="...">
+            </div>
+
+            <div class="col">
+                <iframe width="180" height="100" src="https://www.youtube.com/embed/7X8II6J-6mU?si=eGEsMegGKNkPjLcx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="img-fluid"></iframe>
+            </div>
+
+            <div class="col">
+                <img src="https://picsum.photos/id/75/200/100" class="img-fluid" alt="...">
+            </div>
+
+            <div class="col">
+                <img src="https://picsum.photos/id/85/200/100" class="img-fluid" alt="...">
+            </div>
+        </div>
+    </div>
+
+    {# All informations #}
+    <div class="container my-4" id="informations">
+        <div class="row border shadow rounded p-2 justify-content-start">
+            <h1 class="py-4">{{ trick.name }}</h1>
+            <br>
+            <p class="pb-3">{{ trick.content }}</p>
+            <br>
+            <ul class="list-group list-group-horizontal w-100 mb-4">
+                <li class="col list-group-item d-flex align-items-center">
+                    <i class="bi bi-person-circle px-2"></i>
+                    <p class="m-0">Auteur : Admin</p>
+                </li>
+                <li class="col list-group-item d-flex align-items-center">
+                    <i class="bi bi-collection-fill px-2"></i>
+                    <p class="m-0">Collection : {{ trick.class }}</p>
+                </li>
+                <li class="col small list-group-item d-flex align-items-center">
+                    <i class="bi bi-calendar-check-fill px-2"></i>
+                    <p class="m-0">Date de modification : {{ trick.updatedAt|date("d/m/Y") }}</p>
+                </li>
+            </ul>
+
+            {# Redirection if user is not log in #}
+            <div class="row border-top pt-3">
+                <p class="lead bold text-center">
+                    Pour ajouter un commentaire vous devez vous 
+                    <a class="link">connecter</a> 
+                    ou vous 
+                    <a class="link">inscrire</a>
+                .</p>
+            </div>
+
+            {# Comment form if user is log in #}
+            <div class="row border-top pt-3">
+                <p class="lead bold">Laissez-nous un commentaire :</p>
+                <form class="form d-flex justify-content-evenly">
+                    <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control" placeholder="Message..." aria-label="Message..." aria-describedby="comment">
+                        {# <span class="" id="comment"> _ your username</span> #}
+                        <button type="submit" class="btn btn-outline-success input-group-text">Valider</button>
+                    </div>
+                    
+                </form>
+            </div>
+
+            {# List of all comments #}
+            <div class="row border-top pt-3" id="comments">
+                <p class="lead bold">Commentaires :</p>
+                <div class="row">
+                    <div class="col-2">
+                        <img src="https://picsum.photos/id/256/70/70" class="pl-2 rounded-circle">
+                    </div>
+                    <figure class="col-10 border-bottom">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            <cite title="Username">Username</cite>
+                        </figcaption>
+                    </figure>
+                </div>
+                {# Examples... #}
+                <div class="row">
+                    <div class="col-2">
+                        <img src="https://picsum.photos/id/845/70/70" class="pl-2 rounded-circle">
+                    </div>
+                    <figure class="col-10 border-bottom">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            <cite title="Username">Username</cite>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <img src="https://picsum.photos/id/4/70/70" class="pl-2 rounded-circle">
+                    </div>
+                    <figure class="col-10 border-bottom">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            <cite title="Username">Username</cite>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <img src="https://picsum.photos/id/8/70/70" class="pl-2 rounded-circle">
+                    </div>
+                    <figure class="col-10 border-bottom">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            <cite title="Username">Username</cite>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <img src="https://picsum.photos/id/84/70/70" class="pl-2 rounded-circle">
+                    </div>
+                    <figure class="col-10 border-bottom">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            <cite title="Username">Username</cite>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <button type="button" class="m-auto w-25 btn btn-outline-dark">Load more ...</button>
+        </div>
+
+    </div>
+</main>
+{% endblock %}

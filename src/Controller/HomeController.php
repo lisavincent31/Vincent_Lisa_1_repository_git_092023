@@ -22,7 +22,6 @@ class HomeController extends AbstractController
     {
         $title = "Accueil";
         $tricks = $this->trickRepository->findAll();
-        // dd($tricks);
 
         return $this->render('home/index.html.twig', [
             'title' => $title,

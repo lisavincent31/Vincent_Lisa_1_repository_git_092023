@@ -48,3 +48,48 @@ main#homepage {
         }
     }
 }
+
+/*
+* General Style
+*/
+.bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 550px;
+}
+
+.img-text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translate(0%, -50%);
+    h1 {
+        text-align: center;
+        // color: #fff;
+    }
+}
+
+#slideshow {
+    img {
+        height: 95%!important;
+        width: 95%!important;
+        object-fit: contain;
+    }
+    iframe {
+        height: 100px;
+        width: 200px;
+    }
+}
+
+#comments {
+    img {
+        width: 70px!important;
+    }
+}
+
+main {
+    .row {
+        margin-left: 0!important;
+    }
+}

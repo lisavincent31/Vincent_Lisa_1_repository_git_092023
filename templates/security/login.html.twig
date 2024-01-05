@@ -1,38 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
 <div id="login_form">
     <div class="container">
         <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            {% if app.user %}
+                <div class="mb-3">
+                    Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
+            {% endif %}
+
+            <div class="d-flex">
+                <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+                <a href="/forget-password" class="link">Vous possédez déjà un compte ?</a>
             </div>
-        {% endif %}
+            <div>
+                <label for="inputUsername">Nom d'utilisateur</label>
+                <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+            </div>
+        <div>         
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+            </div>
+            <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+            >
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <div>
-            <label for="inputUsername">Username</label>
-            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-        </div>
-       <div>         
-            <label for="inputPassword">Password</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-        </div>
-        <input type="hidden" name="_csrf_token"
-                value="{{ csrf_token('authenticate') }}"
-        >
+            
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
+            <button class="btn btn-lg btn-primary" type="submit">
+                Valider
+            </button>
         </form>
+        <div class="row mb-0 mt-4">
+            <p class="text-center"><a href="/forget-password" class="link">Mot de passe oublié ?</a></p>
+        </div>
     </div>
 </div>
 {% endblock %}
