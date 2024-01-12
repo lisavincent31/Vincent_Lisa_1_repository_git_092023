@@ -1,3 +1,10 @@
+/* General styles */
+$base-color: #fbfafa;
+
+body {
+    background-color: $base-color!important;
+}
+
 /*
 * Authentication Forms
 */
@@ -37,21 +44,55 @@
 /*
 * HomePage Cards
 */
-main#homepage {
-    #tricks_container {
-        .card {
-            padding: 0!important;
-            .card-img-top {
-                border-top-left-radius: 0.5em;
-                border-top-right-radius: 0.5em;
+main {
+    #homepage {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        .bg-img {
+            position: relative;
+            opacity: 0.65;
+            background-image: url(../../public/img/homepage.jpg);
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            .caption {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 100%;
+                text-align: center;
+                background-color: #1a1a1a;
+                opacity: 0.85;
+                h1, p, a{
+                    background-color: transparent;
+                    opacity: 1;
+                    color: #fff;
+                }
+            }
+        }
+        #tricks_container {
+            .card {
+                padding: 0!important;
+                .card-img-top {
+                    border-top-left-radius: 0.5em;
+                    border-top-right-radius: 0.5em;
+                }
             }
         }
     }
 }
 
 /*
-* General Style
+* Details Trick Page Styles
 */
+main {
+    .row {
+        margin-left: 0!important;
+    }
+}
 .bg-image {
     background-size: cover;
     background-position: center;
@@ -66,7 +107,6 @@ main#homepage {
     transform: translate(0%, -50%);
     h1 {
         text-align: center;
-        // color: #fff;
     }
 }
 
@@ -85,11 +125,5 @@ main#homepage {
 #comments {
     img {
         width: 70px!important;
-    }
-}
-
-main {
-    .row {
-        margin-left: 0!important;
     }
 }
